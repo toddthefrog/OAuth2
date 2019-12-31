@@ -128,9 +128,9 @@ open class OAuth2CodeGrant: OAuth2 {
 	Validates the redirect URI: returns a tuple with the code and nil on success, nil and an error on failure.
 	*/
 	open func validateRedirectURL(_ redirect: URL) throws -> String {
-		guard let expectRedirect = context.redirectURL else {
-			throw OAuth2Error.noRedirectURL
-		}
+//TMT 		guard let expectRedirect = context.redirectURL else {
+// 			throw OAuth2Error.noRedirectURL
+// 		}
 		let comp = URLComponents(url: redirect, resolvingAgainstBaseURL: true)
 		if !(redirect.absoluteString.hasPrefix(expectRedirect)) && (!(redirect.absoluteString.hasPrefix("urn:ietf:wg:oauth:2.0:oob")) && "localhost" != comp?.host) {
 			throw OAuth2Error.invalidRedirectURL("Expecting «\(expectRedirect)» but received «\(redirect)»")
